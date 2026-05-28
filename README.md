@@ -10,6 +10,7 @@
 [![PagerDuty](https://img.shields.io/badge/PagerDuty-0270D7?style=for-the-badge&logo=pagerduty&logoColor=white)](https://pagerduty.com)
 
 AetherFlow is a state-of-the-art developer platform for LLM application observability, tracing, evaluation, prompt playgrounds, and multi-agent swarm orchestration. 
+<img width="864" height="213" alt="6d6d4a24-c3b8-412e-af9d-624318ba82ad" src="https://github.com/user-attachments/assets/935ee762-8b41-4178-b86c-3021aa5cf3c5" />
 
 It provides real-time visualization of agent runs, evaluation metrics, and local agent code execution, serving as a comprehensive open-source alternative to LangSmith and LangChain tracing.
 
