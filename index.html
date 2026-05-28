@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherFlow - Enterprise LLM Observability & Swarm Agent Studio</title>
+  <meta name="description" content="AetherFlow is a state-of-the-art developer platform for LLM application observability, tracing, evaluation, prompt playgrounds, and multi-agent swarm orchestration via AetherGraph.">
+  <meta name="keywords" content="LLM, AI Agents, Observability, Prompt Engineering, Agent Orchestration, AetherGraph, Tracing, Hugging Face, Slack Integration">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/charts.css">
+  <link rel="stylesheet" href="/css/chat-widget.css">
+  <!-- Chart.js and Lucide Icons via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand" onclick="window.location.hash='#/home'">
+          <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/698b2b26acc19233c104b1cd_logo.svg" alt="AetherFlow Logo" style="height: 20px; width: auto;">
+          <i data-lucide="chevron-down" style="width: 14px; height: 14px; margin-left: 2px;"></i>
+        </div>
+        <button class="sidebar-collapse-btn" title="Collapse sidebar">
+          <i data-lucide="sidebar" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-section-label">Application</div>
+      <div class="sidebar-dropdown-trigger" style="display: flex; align-items: center; gap: 0.5rem; width: 100%; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.375rem 0.75rem; background: #ffffff; cursor: pointer;">
+        <i data-lucide="folder" style="width: 14px; height: 14px; color: var(--color-brand);"></i>
+        <span style="font-size: 0.8125rem; font-weight: 500; color: var(--color-text-primary);">My First App</span>
+        <i data-lucide="chevron-down" style="width: 14px; height: 14px; color: var(--color-text-muted); margin-left: auto;"></i>
+      </div>
+
+      <div class="sidebar-search-container">
+        <div class="sidebar-search-input-wrapper">
+          <i data-lucide="search" class="sidebar-search-icon" style="width: 14px; height: 14px;"></i>
+          <input type="text" class="sidebar-search-input" placeholder="Search..." id="globalSearchInput">
+          <kbd class="sidebar-search-kbd">Ctrl K</kbd>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#/home" class="sidebar-menu-item active" data-page="home">
+          <i data-lucide="home" style="width: 16px; height: 16px;"></i>
+          <span>Home</span>
+        </a>
+        <a href="#/tracing" class="sidebar-menu-item" data-page="tracing">
+          <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/6989c024180a65887312dd40_Frame%202147254707.svg" alt="Tracing Icon" style="width: 16px; height: 16px;">
+          <span>Tracing</span>
+          <span class="badge badge-blue" style="margin-left: auto; font-size: 0.6875rem;">1</span>
+        </a>
+        <a href="#/monitoring" class="sidebar-menu-item" data-page="monitoring">
+          <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/6989c0247f235ca5583fa63b_Frame%202147255166.svg" alt="Monitoring Icon" style="width: 16px; height: 16px;">
+          <span>Monitoring</span>
+        </a>
+        <a href="#/datasets" class="sidebar-menu-item" data-page="datasets">
+          <i data-lucide="database" style="width: 16px; height: 16px;"></i>
+          <span>Datasets & Experiments</span>
+        </a>
+        <a href="#/evaluators" class="sidebar-menu-item" data-page="evaluators">
+          <i data-lucide="check-square" style="width: 16px; height: 16px;"></i>
+          <span>Evaluators</span>
+        </a>
+        <a href="#/annotations" class="sidebar-menu-item" data-page="annotations">
+          <i data-lucide="list-todo" style="width: 16px; height: 16px;"></i>
+          <span>Annotation Queues</span>
+        </a>
+        <div style="height: 1px; background-color: var(--color-sidebar-border); margin: 0.5rem 0.25rem;"></div>
+        <a href="#/prompts" class="sidebar-menu-item" data-page="prompts">
+          <i data-lucide="message-square" style="width: 16px; height: 16px;"></i>
+          <span>Prompts</span>
+        </a>
+        <a href="#/playground" class="sidebar-menu-item" data-page="playground">
+          <i data-lucide="play-circle" style="width: 16px; height: 16px;"></i>
+          <span>Playground</span>
+        </a>
+        <a href="#/studio" class="sidebar-menu-item" data-page="studio">
+          <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/6989c024c2d98286a8fb058f_Frame%202147255166-1.svg" alt="Studio Icon" style="width: 16px; height: 16px;">
+          <span>Studio</span>
+        </a>
+        <a href="#/context-hub" class="sidebar-menu-item" data-page="context-hub">
+          <i data-lucide="layers" style="width: 16px; height: 16px;"></i>
+          <span>Context Hub</span>
+        </a>
+        
+        <div class="sidebar-section-label" style="margin-top: 0.5rem;">Deployments</div>
+        <a href="#/deployments" class="sidebar-menu-item" data-page="deployments">
+          <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/6989c024926f877c1de6e728_updated.svg" alt="Deployments Icon" style="width: 16px; height: 16px;">
+          <span>Deployments</span>
+        </a>
+        <a href="#/sandboxes" class="sidebar-menu-item" data-page="sandboxes">
+          <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/6a020888f9b2346912c07f41_sandboxes_light_mode%202.svg" alt="Sandboxes Icon" style="width: 16px; height: 16px;">
+          <span>Sandboxes</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#/keyboard-shortcuts" class="sidebar-menu-item" data-page="keyboard-shortcuts">
+          <svg class="sidebar-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+            <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
+            <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M6 12h.01M18 12h.01M7 16h10M10 12h4" />
+          </svg>
+          <span>Keyboard Shortcuts</span>
+        </a>
+        <div class="sidebar-menu-item" id="themeToggleBtn" style="cursor: pointer;">
+          <svg class="theme-icon-dark sidebar-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+          <svg class="theme-icon-light sidebar-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; display: none;">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <span class="theme-text">Dark Mode</span>
+        </div>
+        <a href="#/settings" class="sidebar-menu-item" data-page="settings">
+          <svg class="sidebar-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <span>Settings</span>
+        </a>
+        <div class="sidebar-user" id="sidebarUserBtn">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Avatar" class="sidebar-user-avatar">
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name">Personal</span>
+            <span class="sidebar-user-email">ashutoshkumarsingh0x@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Viewport Area -->
+    <main class="main-content">
+      <!-- Top header bar (rendered dynamically based on page) -->
+      <header class="top-header" id="topHeader"></header>
+
+      <!-- App Sub-Tab/Stats Bar (if needed, e.g., on home page) -->
+      <div id="quickStatsBar" class="stats-bar hidden"></div>
+
+      <!-- Page Content Target -->
+      <div id="pageContent" class="page-wrapper"></div>
+    </main>
+
+    <!-- Floating Chat Widget -->
+    <div class="chat-widget-container" id="chatWidgetContainer">
+      <!-- Chat Pane -->
+      <div class="chat-pane hidden" id="chatPane">
+        <div class="chat-header">
+          <div class="chat-header-title">
+            <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/698b2b26acc19233c104b1cd_logo.svg" alt="AetherFlow Logo" style="height: 14px; width: auto; margin-right: 4px;">
+            <span>Chat</span>
+          </div>
+          <div class="chat-header-actions">
+            <span class="chat-header-action-btn" title="Expand"><i data-lucide="maximize-2" style="width: 14px; height: 14px;"></i></span>
+            <span class="chat-header-action-btn" title="History"><i data-lucide="history" style="width: 14px; height: 14px;"></i></span>
+            <span class="chat-header-action-btn" id="closeChatBtn" title="Close"><i data-lucide="x" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-welcome-state" id="chatWelcomeState">
+            <div class="chat-welcome-logo" style="background-color: transparent; border-radius: 0; box-shadow: none; width: auto; height: auto; margin-bottom: 1.25rem;">
+              <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/698b2b26acc19233c104b1cd_logo.svg" alt="AetherFlow Logo" style="height: 36px; width: auto;">
+            </div>
+            <h3 class="chat-welcome-title">I'm AetherFlow Chat</h3>
+            <p class="chat-welcome-desc">Ask questions about AetherFlow, get help with tracing, datasets, evaluations, and more.</p>
+            
+            <div class="chat-suggestions">
+              <div class="chat-suggestion-card" data-prompt="How do I use AetherFlow?">
+                <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+                <span>How do I use AetherFlow?</span>
+              </div>
+              <div class="chat-suggestion-card" data-prompt="Explain LLM evaluations">
+                <i data-lucide="search" style="width: 14px; height: 14px;"></i>
+                <span>Explain LLM evaluations</span>
+              </div>
+              <div class="chat-suggestion-card" data-prompt="Help me debug a trace issue">
+                <i data-lucide="help-circle" style="width: 14px; height: 14px;"></i>
+                <span>Help me debug a trace issue</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-panel">
+          <div class="chat-input-row">
+            <input type="text" class="chat-text-input" placeholder="Ask a question..." id="chatTextInput">
+            <div class="chat-input-actions">
+              <select class="chat-model-selector" id="chatModelSelector">
+                <option value="sonnet-4.6">Sonnet 4.6</option>
+                <option value="gpt-4o">GPT-4o</option>
+                <option value="gemini-1.5">Gemini 1.5</option>
+              </select>
+              <button class="chat-round-btn" title="Use voice" style="padding: 0;"><i data-lucide="mic" style="width: 14px; height: 14px;"></i></button>
+              <button class="chat-round-btn chat-send-btn" id="sendChatBtn" title="Send" style="padding: 0;"><i data-lucide="send" style="width: 12px; height: 12px;"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trigger FAB -->
+      <button class="chat-trigger-btn" id="chatTriggerBtn" title="Ask AetherFlow Assistant" style="background-color: #0f172a; padding: 0;">
+        <img src="https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/698b2b26acc19233c104b1cd_logo.svg" alt="AetherFlow Logo" style="height: 20px; width: auto; filter: brightness(0) invert(1);">
+      </button>
+    </div>
+  </div>
+
+  <!-- Search Modal Overlay (Command Palette) -->
+  <div class="search-overlay hidden" id="searchModalOverlay">
+    <div class="search-modal">
+      <div class="search-modal-header">
+        <i data-lucide="search" style="width: 18px; height: 18px; color: #64748b;"></i>
+        <input type="text" id="modalSearchInput" placeholder="Search for projects, datasets, and more..." autocomplete="off">
+        <kbd class="search-esc-kbd">Esc</kbd>
+      </div>
+      
+      <div class="search-modal-body">
+        <div class="search-section-label">RECENTLY VIEWED</div>
+        <div class="search-results-list" id="recentlyViewedList">
+          <div class="search-result-item" data-path="#/home">
+            <i data-lucide="folder" class="result-icon"></i>
+            <span class="result-text" style="font-weight: 500;">new</span>
+            <i data-lucide="arrow-up-right" class="result-arrow" style="color: var(--color-text-muted); margin-left: auto;"></i>
+          </div>
+        </div>
+
+        <div class="search-section-label">RESOURCES</div>
+        <div class="search-results-list" id="resourcesList">
+          <div class="search-result-item" data-path="#/tracing">
+            <i data-lucide="activity" class="result-icon"></i>
+            <span class="result-text">Tracing</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/monitoring">
+            <i data-lucide="bar-chart-3" class="result-icon"></i>
+            <span class="result-text">Monitoring</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/datasets">
+            <i data-lucide="database" class="result-icon"></i>
+            <span class="result-text">Datasets & Experiments</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/evaluators">
+            <i data-lucide="check-square" class="result-icon"></i>
+            <span class="result-text">Evaluators</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/annotations">
+            <i data-lucide="list-todo" class="result-icon"></i>
+            <span class="result-text">Annotation Queues</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/prompts">
+            <i data-lucide="message-square" class="result-icon"></i>
+            <span class="result-text">Prompts</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/playground">
+            <i data-lucide="play-circle" class="result-icon"></i>
+            <span class="result-text">Playground</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/studio">
+            <i data-lucide="layout-grid" class="result-icon"></i>
+            <span class="result-text">Studio</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/deployments">
+            <i data-lucide="rocket" class="result-icon"></i>
+            <span class="result-text">Deployments</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/settings">
+            <i data-lucide="settings" class="result-icon"></i>
+            <span class="result-text">Settings</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/settings">
+            <i data-lucide="building" class="result-icon"></i>
+            <span class="result-text">Organizations</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-path="#/settings">
+            <i data-lucide="briefcase" class="result-icon"></i>
+            <span class="result-text">Workspaces</span>
+            <span class="result-settings-icon" data-path="#/settings" title="Settings"><i data-lucide="settings" style="width: 14px; height: 14px;"></i></span>
+          </div>
+          <div class="search-result-item" data-action="toggle-dark" data-path="theme-dark">
+            <i data-lucide="moon" class="result-icon"></i>
+            <span class="result-text">Use Dark Mode</span>
+          </div>
+          <div class="search-result-item" data-action="toggle-light" data-path="theme-light">
+            <i data-lucide="sun" class="result-icon"></i>
+            <span class="result-text">Use Light Mode</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-modal-footer">
+        <span>&uarr;&darr; to navigate &bull; Enter to select</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry Script -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

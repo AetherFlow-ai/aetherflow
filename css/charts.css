@@ -1,0 +1,33 @@
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.chart-card-legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.legend-color-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.legend-color-success {
+  background-color: var(--color-success);
+}
+
+.legend-color-error {
+  background-color: var(--color-error);
+}

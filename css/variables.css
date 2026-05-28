@@ -1,0 +1,240 @@
+:root {
+  /* Colors matching AetherFlow */
+  --color-primary: #0f172a;          /* Slate-900 / dark text */
+  --color-brand: #1d4ed8;            /* Primary blue button/accent */
+  --color-brand-hover: #1e40af;      /* Darker blue */
+  --color-brand-light: #eff6ff;      /* Very light blue for selection */
+  --color-brand-border: #bfdbfe;     /* Light blue border */
+  
+  --color-bg-main: #f8fafc;          /* Light gray-blue page background */
+  --color-bg-card: #ffffff;          /* Card background */
+  
+  --color-sidebar-bg: #ffffff;       /* Sidebar is white */
+  --color-sidebar-border: #e2e8f0;   /* Light border */
+  --color-sidebar-hover: #f1f5f9;    /* Hover gray */
+  --color-sidebar-active: #e0f2fe;   /* Light blue active background */
+  --color-sidebar-active-text: #0369a1; /* Active text color */
+  
+  --color-text-primary: #0f172a;     /* Near black */
+  --color-text-secondary: #475569;   /* Gray description */
+  --color-text-muted: #64748b;       /* Muted gray */
+  
+  --color-border: #e2e8f0;           /* Global light border */
+  --color-border-hover: #cbd5e1;
+  
+  --color-success: #10b981;          /* Emerald 500 */
+  --color-success-bg: #ecfdf5;       /* Green background */
+  --color-error: #ef4444;            /* Red 500 */
+  --color-error-bg: #fef2f2;         /* Red background */
+  --color-warning: #f59e0b;          /* Amber 500 */
+  --color-warning-bg: #fffbeb;       /* Yellow background */
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Misc */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  --sidebar-width: 240px;
+}
+
+body.dark-mode {
+  --color-primary: #f8fafc;
+  --color-bg-main: #030712;
+  --color-bg-card: #090d16;
+  
+  --color-sidebar-bg: #090d16;
+  --color-sidebar-border: #1e293b;
+  --color-sidebar-hover: #111827;
+  --color-sidebar-active: #1e3a8a;
+  --color-sidebar-active-text: #93c5fd;
+  
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  
+  --color-border: #1e293b;
+  --color-border-hover: #334155;
+  
+  background-color: #030712 !important;
+}
+
+body.dark-mode .sidebar {
+  background-color: #090d16;
+  border-right-color: #1e293b;
+}
+
+body.dark-mode .top-header {
+  background-color: #090d16;
+  border-bottom-color: #1e293b;
+}
+
+body.dark-mode .sidebar-menu-item {
+  color: #94a3b8;
+}
+
+body.dark-mode .sidebar-menu-item.active {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+body.dark-mode .sidebar-dropdown-trigger {
+  background-color: #090d16 !important;
+  border-color: #1e293b !important;
+}
+
+body.dark-mode .sidebar-search-input-wrapper {
+  background-color: #111827;
+  border-color: #1e293b;
+}
+
+body.dark-mode .sidebar-search-input {
+  color: #f8fafc;
+}
+
+body.dark-mode .search-modal {
+  background-color: #090d16;
+  border-color: #1e293b;
+}
+
+body.dark-mode .search-modal-header {
+  border-bottom-color: #1e293b;
+}
+
+body.dark-mode .search-modal-header input {
+  color: #f8fafc;
+}
+
+body.dark-mode .search-result-item:hover, body.dark-mode .search-result-item.selected {
+  background-color: #111827;
+  color: #3b82f6;
+}
+
+body.dark-mode .search-modal-footer {
+  background-color: #111827;
+  border-top-color: #1e293b;
+}
+
+body.dark-mode .workspace-user-selector {
+  background: #111827 !important;
+  border-color: #1e293b !important;
+}
+
+body.dark-mode .workspace-id-badge {
+  background-color: #111827 !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .section-panel {
+  background-color: #090d16;
+  border-color: #1e293b;
+}
+
+body.dark-mode table thead tr {
+  background: #111827 !important;
+}
+
+body.dark-mode table th, body.dark-mode table td {
+  border-bottom-color: #1e293b !important;
+}
+
+body.dark-mode .empty-state {
+  background: #090d16;
+  border-color: #1e293b;
+}
+
+body.dark-mode .stripe-inline-pane {
+  background: #090d16;
+  border-color: #1e293b;
+}
+
+body.dark-mode .stripe-window-header {
+  background-color: #111827 !important;
+  border-bottom-color: #1e293b;
+  color: #f8fafc;
+}
+
+body.dark-mode .stripe-summary-pane {
+  background-color: #111827 !important;
+  border-right-color: #1e293b;
+}
+
+body.dark-mode .stripe-summary-price {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .stripe-input {
+  background: #111827;
+  border-color: #1e293b;
+  color: #f8fafc;
+}
+
+body.dark-mode .card-input-wrapper {
+  background: #111827;
+  border-color: #1e293b;
+}
+
+body.dark-mode .stripe-window-footer {
+  background-color: #111827;
+  border-top-color: #1e293b;
+}
+
+body.dark-mode .chat-pane {
+  background-color: #090d16;
+  border-color: #1e293b;
+}
+
+body.dark-mode .chat-header {
+  border-bottom-color: #1e293b;
+}
+
+body.dark-mode .chat-suggestion-card {
+  background-color: #111827;
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+body.dark-mode .chat-input-panel {
+  border-top-color: #1e293b;
+}
+
+body.dark-mode .chat-text-input {
+  background-color: #111827;
+  border-color: #1e293b;
+  color: #f8fafc;
+}
+
+body.dark-mode .chat-model-selector {
+  background-color: #111827;
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+body.dark-mode .chat-round-btn {
+  background-color: #111827;
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+body.dark-mode .chat-messages {
+  background-color: #090d16;
+}
+
+body.dark-mode .chat-welcome-title {
+  color: #f8fafc;
+}
+
